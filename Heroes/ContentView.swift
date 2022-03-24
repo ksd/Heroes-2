@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var appState: StateController
+    let locationControler = LocationController()
     
     private var heroList: [Hero] {
         appState.heroList
@@ -19,7 +20,7 @@ struct ContentView: View {
         NavigationView {
             List(heroList) { hero in
                 NavigationLink(
-                    destination: HeroDetail(hero: hero)) {
+                    destination: HeroDetail(locationState: locationControler, hero: hero)) {
                         HeroRow(hero: hero)
                     }
             }.navigationTitle("Heroes")
